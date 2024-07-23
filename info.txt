@@ -1,0 +1,4 @@
+Instalação e configuração do Cypress:
+npm init --yes
+npm install cypress
+npx cypress open (serve para executar)
