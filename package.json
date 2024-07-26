@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "cypress:run:mobile":"npx cypress run viewportWidth=400, viewportHeight=543",
+    "cypress:run": "npx cypress run"
   },
   "keywords": [],
   "author": "",

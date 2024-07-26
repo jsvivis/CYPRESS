@@ -1,5 +1,4 @@
-//Testes Aula 22/07/2024
-//Atividade Avaliativa - #02 - ATIVIDADE CYPRESS - 1
+//Testes Aula 25/07/2024
 
 /// <reference types='cypress' />
 
@@ -23,7 +22,7 @@ it('cadastrar entradas', ()=>{
 // adicionar as asserções que vamos precisar
 // cy.get --> mapear um elemento
 
-//primeira entrada:
+//entrada:
 cy.get('#data-table tbody tr').should('have.length',0)
 cy.get('#transaction .button').click(); //id + class
 //cy.get('#transaction > button')
@@ -34,36 +33,41 @@ cy.get('[type=date]').type('2024-07-17') //atributo
 cy.get('button').contains('Salvar').click(); //tipo
 cy.get('#data-table tbody tr').should('have.length',1)
 
-//segunda entrada:
-cy.get('#transaction .button').click(); //id + class
-cy.get('#description').type('Minhas Compras')
-cy.get('[name=amount]').type('500') //atributo
-cy.get('[type=date]').type('2024-07-22') //atributo
-cy.get('button').contains('Salvar').click(); //tipo
-cy.get('#data-table tbody tr').should('have.length',2)
-
-cy.get('[data-index="0"] > :nth-child(4) > img').click() // removendo lançamentos
-})
-
-
 it.only('Cadastrar Saídas', ()=>{
 
-//primeira saida:
+//saida:
 cy.get('#transaction .button').click(); //id + class
 cy.get('#description').type('Presente Dia dos Pais')
 cy.get('[name=amount]').type('-200') //atributo
 cy.get('[type=date]').type('2024-07-18') //atributo
 cy.get('button').contains('Salvar').click(); //tipo
 cy.get('#data-table tbody tr').should('have.length',1)
-
-//segunda saida:
-cy.get('#transaction .button').click(); //id + class
-cy.get('#description').type('Minhas Compras')
-cy.get('[name=amount]').type('-250') //atributo
-cy.get('[type=date]').type('2024-07-18') //atributo
-cy.get('button').contains('Salvar').click(); //tipo
-cy.get('#data-table tbody tr').should('have.length',2)
-
-cy.get('[data-index="1"] > :nth-child(4) > img').click() // removendo lançamentos
+});
 })
+
+
+it('Remover entradas e saídas', () =>{
+        //variáveis âncoras
+    const entrada = 'Salário do Mês'
+    const saida = 'Presente Dia dos Pais'
+
+    cy.get('#transaction .button').click(); //id + class
+    cy.get('#description').type(entrada)
+    cy.get('[name=amount]').type('250') //atributo
+    cy.get('[type=date]').type('2024-07-17') //atributo
+    cy.get('button').contains('Salvar').click(); //tipo
+
+    cy.get('#transaction .button').click(); //id + class
+    cy.get('#description').type(saida)
+    cy.get('[name=amount]').type('-50') //atributo
+    cy.get('[type=date]').type('2024-07-18') //atributo
+    cy.get('button').contains('Salvar').click(); //tipo
+    
+    //busca o elemento pai e avança para um td img atributo
+    cy.get('td.description').contains(saida).parent().find('img[onclick*=remove]').click();
+
+   
+});
+
+
 });
