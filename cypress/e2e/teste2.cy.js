@@ -1,5 +1,5 @@
 //Testes Aula 24/07/2024
-//Atividade Avaliativa - #02 - ATIVIDADE CYPRESS - 1
+//Atividade Avaliativa - #03 - ATIVIDADE CYPRESS - 1
 
 /// <reference types='cypress' />
 

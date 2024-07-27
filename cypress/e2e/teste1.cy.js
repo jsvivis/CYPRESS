@@ -1,4 +1,4 @@
-//Testes Aula 25/07/2024
+//Testes Práticos Aula 25/07/2024
 
 /// <reference types='cypress' />
 
