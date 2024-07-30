@@ -2,3 +2,4 @@ Instalação e configuração do Cypress:
 npm init --yes
 npm install cypress
 npx cypress open (serve para executar)
+npm run cypress:run:mobile (executar e abrir)
